@@ -8,45 +8,47 @@ int hf=50;
 int hb=-50;
 int ff = 55;
 int fb = -50;
+// declare the movement speed functions
 int straightt = 150;
 int backingt = 500;
 int turningt = 800;
 int count = 0;
-    // delcare functions
+    // declare functions
 void forward();
 void left();
 void right();
 void backward();
+//declare the movement functions
 
 int main()
 {
-    shut_down_in(303.0);
+    shut_down_in(303.0); //shutdown after 5 minutes and 3 seconds
     while(1==1)
     {
         forward();
-        if(digital(1)==0)
+        if(digital(1)==0) //if the button is not being pushed go forward
         {
             forward();
         }  
-        else
+        else //if the button is pushed back up take a 45 degree right then back up again add 1 to the escape counter
         {
             backward();
             right();
             backward();
             count = count + 1;
         }
-        if(digital(0)==0)
+        if(digital(0)==0) //if the button is not being pushed go forward
         {
             forward();
         }
-        else
+        else //if the button is pushed back up take a 45 degree right then back up again add 1 to the escape counter
         {
             backward();
             left();
             backward();
             count = count + 1;
         }
-        if(count == 6)
+        if(count == 6) //if the escape counter reaches 6 then back up before taking a left turn
         {
             backward();
             backward();
